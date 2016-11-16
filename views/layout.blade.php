@@ -10,13 +10,17 @@
 
 <!-- show the topmenu bar -->
 <div class="topbar">
+<span style="float:left;"></span>
+<span class=""><a href="">Home</a></span>
+<span class=""><a href="register.php">Registreer</a></span>
+<span class=""><a href="">Evenementen</a></span>
 @if(isset($_SESSION['userEmail']))
 	<span class="">{{ $_SESSION['userEmail'] }}</span>
 	<span class="" style="float:right;"><a href="logout_action.php">Logout</a></span>
 @else
-	<span class=""/><span>No user logged in</span>
+	<span class=""><a href="login.php">Login</a></span>
+	<span class="" style="float:right;"/><span>No user logged in</span>
 @endif
-<span style="float:left;"></span>
 </div>
 
 
