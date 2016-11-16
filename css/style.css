@@ -2,3 +2,22 @@ p
 {
     font: Verdana;
 }
+
+.topbar {
+	width: 100%-10px;
+	height: 24px;
+	color: white;
+	background-color: black;
+	padding: 5px;
+}
+
+.errors {
+	color: #D8000C;
+	background-color: #FFBABA;
+	margin: 10px 0;
+	padding: 12px;
+}
+
+.topbar span a {
+	color: white;
+}
