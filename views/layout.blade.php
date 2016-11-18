@@ -12,8 +12,8 @@
 <div class="topbar">
 <span style="float:left;"></span>
 <span class=""><a href="">Home</a></span>
-<span class=""><a href="register.php">Registreer</a></span>
-<span class=""><a href="">Evenementen</a></span>
+<span class=""><a href="register.php">Sign Up</a></span>
+<span class=""><a href="">Events</a></span>
 @if(isset($_SESSION['userEmail']))
 	<span class="">{{ $_SESSION['userEmail'] }}</span>
 	<span class="" style="float:right;"><a href="logout_action.php">Logout</a></span>

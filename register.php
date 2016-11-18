@@ -1,5 +1,5 @@
 <?php 
-
+ require_once 'inc/connection.php';
  require_once 'inc/session.php';
  require_once 'inc/blade.php';
  $errors = [];
