@@ -5,8 +5,10 @@
 
 <h1>Registreren</h1>
 
+<?php var_export($errors); ?>
+
     <div class="row">
-        <form role="form" method="post">
+        <form role="form" method="post" action="register_action.php">
             <div class="col-lg-6">
                 <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
                 <div class="form-group">
