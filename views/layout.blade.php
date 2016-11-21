@@ -11,7 +11,7 @@
 <!-- show the topmenu bar -->
 <div class="topbar">
 <span style="float:left;"></span>
-<span class=""><a href="">Home</a></span>
+<span class=""><a href="index.php">Home</a></span>
 <span class=""><a href="register.php">Sign Up</a></span>
 <span class=""><a href="">Events</a></span>
 @if(isset($_SESSION['userEmail']))

@@ -1,13 +1,7 @@
 <?php 
 
-// load neccesary files
-require 'vendor/autoload.php';
-use Philo\Blade\Blade;
-
-// configure blade engine
-$views = __DIR__ . '/views';
-$cache = __DIR__ . '/cache';
-$blade = new Blade($views, $cache);
+require_once 'inc/blade.php';
+$errors = [];
 
 // pass data
 $vars = [
