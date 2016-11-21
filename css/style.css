@@ -1,3 +1,7 @@
+body{
+	padding:0;
+	margin:0;
+}
 p
 {
     font: Verdana;
@@ -20,4 +24,26 @@ p
 
 .topbar span a {
 	color: white;
+}
+img.homepage{
+   position:absolute;  
+    opacity: 0.5;
+}
+div.topmenu{
+    background-image: url(../homepage.jpg);
+    width: 1000px;
+	vertical-align: top;
+    text-align: center;
+    color:white;
+    border: solid;
+    border-color: black;
+    border-width: thick;
+    opacity: 0.5;
+}
+div.container{
+    position: absolute;
+    left: 10%;
+    right: 1;
+    margin: auto;
+}
 }
