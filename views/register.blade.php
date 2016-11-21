@@ -34,21 +34,21 @@
                 <div class="form-group">
                     <label for="txt_email">Email</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" name="txt_email" id="Email" placeholder="Vul een email in" required>
+                        <input type="email" class="form-control" id="Email" name="txt_email" placeholder="Vul een email in" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="txt_wachtwoord">Wachtwoord</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="pwd" name="txt_wachtwoord" placeholder="Vul een wachtwoord in">
+                        <input type="password" class="form-control" id="wachtwoord" name="txt_wachtwoord" placeholder="Vul een wachtwoord in">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="txt_wachtwoord2">Herhaal Wachtwoord</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="pwd2" name="txt_wachtwoord2" placeholder="Herhaal Wachtwoord">
+                        <input type="password" class="form-control" id="wachtwoord" name="txt_wachtwoord2" placeholder="Herhaal Wachtwoord">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
