@@ -33,7 +33,7 @@ if ($sql->execute(array($Gebruikersnaam)))
 		}
 	}
 
-$sth = $db->prepare("INSERT INTO gebruikers (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam) VALUES (?, ?, ?, ?, ?, ?)");
+$sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam) VALUES (?, ?, ?, ?, ?, ?)");
 if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Wachtwoord, $Gebruikersnaam)))
 {
 	$_SESSION['errors'][] = 'De gegevens zijn ingevuld en opgeslagen in de database.';
