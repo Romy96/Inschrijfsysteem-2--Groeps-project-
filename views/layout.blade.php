@@ -13,7 +13,7 @@
 <span style="float:left;"></span>
 <span class=""><a href="main.php">Home</a></span>
 <span class=""><a href="register.php">Sign Up</a></span>
-<span class=""><a href="">Events</a></span>
+<span class=""><a href="events.php">Events</a></span>
 @if(isset($_SESSION['email']))
 	<span class="">{{ $_SESSION['email'] }}</span>
 	<span class="" style="float:right;"><a href="logout_action.php">Logout</a></span>
