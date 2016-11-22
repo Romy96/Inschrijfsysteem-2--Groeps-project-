@@ -26,10 +26,11 @@ p {
 	color: white;
 }
 
-img.homepage{
+img.homepage {
    position:absolute;  
     opacity: 0.5;
 }
+
 div.topmenu{
     background-image: url(../homepage.jpg);
     width: 1000px;
