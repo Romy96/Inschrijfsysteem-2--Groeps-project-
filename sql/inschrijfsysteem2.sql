@@ -1,14 +1,13 @@
-
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Machine: localhost
--- Genereertijd: 15 nov 2016 om 14:57
--- Serverversie: 10.0.22-MariaDB
--- PHP-versie: 5.2.17
+-- Machine: 127.0.0.1
+-- Gegenereerd op: 23 nov 2016 om 10:14
+-- Serverversie: 5.6.17
+-- PHP-versie: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -24,21 +23,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `activities`
+--
+
+CREATE TABLE IF NOT EXISTS `activities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) NOT NULL,
+  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `banner_url` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `activities`
+--
+
+INSERT INTO `activities` (`id`, `event_id`, `title`, `banner_url`, `description`) VALUES
+(1, 1, 'Voetbal', 'img/voetbal.jpg', 'Voetbaltoernooi met teams van drie spelers. Het winnende team wint een speciale verrassing.'),
+(2, 1, 'Volleybal', 'img/volleybal.JPG', 'Volleyballen met teams van twee spelers. Eerst wordt er oefeningen gedaan en dan spelen tegen elkaar.');
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `events`
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `subtitle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
   `large_banner_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `small_banner_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `events`
+--
+
+INSERT INTO `events` (`id`, `title`, `large_banner_url`, `small_banner_url`, `start_date`, `end_date`) VALUES
+(1, 'Sportdag', 'img/Banner_Sportdag.png', 'img/sportdag.jpg', '2016-11-23 09:02:02', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
 
 --
 -- Tabelstructuur voor tabel `members`
@@ -55,9 +85,24 @@ CREATE TABLE IF NOT EXISTS `members` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `gebruikersnaam` (`gebruikersnaam`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `members`
+--
 
+INSERT INTO `members` (`id`, `voornaam`, `voorvoegsel`, `achternaam`, `email`, `wachtwoord`, `gebruikersnaam`) VALUES
+(1, 'Romy', '', 'Bijkerk', 'romy-bijkerk@hotmail.com', 'Htmldiv1', 'Romy96');
+
+--
+-- Beperkingen voor geëxporteerde tabellen
+--
+
+--
+-- Beperkingen voor tabel `activities`
+--
+ALTER TABLE `activities`
+  ADD CONSTRAINT `events` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
