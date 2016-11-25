@@ -1,11 +1,10 @@
-body{
+body {
 	padding:0;
 	margin:0;
 }
 p {
     font: Verdana;
 }
-
 .topbar {
 	width: 100%-10px;
 	height: 24px;
@@ -13,24 +12,20 @@ p {
 	background-color: black;
 	padding: 5px;
 }
-
 .errors {
 	color: #D8000C;
 	background-color: #FFBABA;
 	margin: 10px 0;
 	padding: 12px;
 }
-
 .topbar span a {
 	color: white;
 }
-
 img.homepage{
    position:absolute;  
-    opacity: 0.5;
 }
 div.topmenu{
-    background-image: url(../homepage.jpg);
+    background-image: url(../img/homepage.jpg);
     width: 1000px;
 	vertical-align: top;
     text-align: center;
@@ -38,7 +33,7 @@ div.topmenu{
     border: solid;
     border-color: black;
     border-width: thick;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 div.container{
     position: absolute;
@@ -46,8 +41,6 @@ div.container{
     right: 1;
     margin: auto;
 }
-
-
 .img {
 	float: left; 
 	margin-right: 16px; 
@@ -56,17 +49,25 @@ div.container{
 	border: 1px solid silver;
 	margin-top: 2%;
 }
-
 .img2 {
 	width: 276px; 
 	height: 136px; 
 	margin: 12px;
 }
-
 .data_info {
 	font-family: roboto; 
 	color: white; 
 	font-size: 14pt;   
 	text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px silver, -1px -1px 0 silver, 1px -1px 0 silver, -1px 1px 0 silver; 
 }
-
+.img2 {
+	width: 276px; 
+	height: 136px; 
+	margin: 12px;
+}
+.data_info {
+	font-family: roboto; 
+	color: white; 
+	font-size: 14pt;   
+	text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px silver, -1px -1px 0 silver, 1px -1px 0 silver, -1px 1px 0 silver; 
+}
