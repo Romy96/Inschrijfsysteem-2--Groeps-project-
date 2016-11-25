@@ -37,7 +37,7 @@ $sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, ema
 if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Wachtwoord, $Gebruikersnaam)))
 {
 	$_SESSION['errors'][] = 'De gegevens zijn ingevuld en opgeslagen in de database.';
-	header('Location: login.php');
+	header('Location: events.php');
 	exit;
 }
 else
