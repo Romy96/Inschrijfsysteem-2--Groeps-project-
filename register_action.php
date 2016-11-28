@@ -2,6 +2,7 @@
 require_once 'inc/crud.php';
 require 'inc/connection.php';
 require 'inc/session.php';
+require 'inc/random.php';
 
 $Voornaam = $_POST['voornaam'];
 $Voorvoegsel = $_POST['tussenvoegsel'];
@@ -11,6 +12,7 @@ $Email = $_POST['email'];
 $Wachtwoord = $_POST['wachtwoord'];
 $Herhaal_wachtwoord = $_POST['wachtwoord2'];
 $Hash = Password_Hash($Wachtwoord, PASSWORD_DEFAULT);
+$Validation_token = generateRandomString(10);
 
 if ( empty($_POST['voornaam']) || empty($_POST['achternaam']) || empty($_POST['gebruikersnaam']) || empty($_POST['email']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord2'])) {
 	$_SESSION['errors'][] = 'Één van de velden of meer zijn niet ingevuld.';
@@ -34,12 +36,21 @@ if ($sql->execute(array($Gebruikersnaam)))
 		}
 	}
 
-$sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam) VALUES (?, ?, ?, ?, ?, ?)");
-if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam)))
+$query = $db->prepare("SELECT * FROM members WHERE email=?");
+if ($query->execute(array($Email)))
+	{
+		if ( $query->rowCount() > 0 ) {
+			$_SESSION['errors'][] = 'Deze emailadres is al in gebruik!';
+			header('Location: register.php');
+			exit;
+		}
+	}
+
+$sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, validation_token) VALUES (?, ?, ?, ?, ?, ?, ?)");
+if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam, $Validation_token)))
 {
-	$_SESSION['errors'][] = 'De gebruiker is aangemaakt. Log in om de evenementen te bekijken!';
-	header('Location: login.php');
-	exit;
+	require 'inc/validation_mail.php';
+	$_SESSION['email'] = $Email;
 }
 else
 {
@@ -47,3 +58,6 @@ else
 	header('Location: register.php');
 	exit;
 }
+
+header('Location: login.php');
+exit;

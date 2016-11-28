@@ -87,3 +87,29 @@ div.container{
 	font-size: 54px;
 }
 
+div.debugbar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	min-height: 80px;
+	background-color: pink;
+	border: 1px solid silver;
+}
+
+div.debugbar .col {
+	width: 32%;
+	float: right;
+	margin-right: 1%;
+	font-size: 8pt;
+}
+
+div.debugbar .col p {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	padding: 3px;
+}
+

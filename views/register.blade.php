@@ -45,6 +45,7 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <input type="hidden" name="validation_token">
                     <label for="txt_wachtwoord2">Herhaal Wachtwoord</label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="wachtwoord" name="wachtwoord2" placeholder="Herhaal Wachtwoord">
