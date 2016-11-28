@@ -1,12 +1,17 @@
-
 <?php 
-
+ require_once 'inc/connection.php';
  require_once 'inc/session.php';
  require_once 'inc/blade.php';
+ require_once 'inc/crud.php';
  $errors = [];
 
 
-	require 'inc/connection.php';
+if ( IsLoggedInSession()==false ) {
+    $_SESSION['errors'][] = "Log eerst ff in";
+	header('location: login.php');
+	exit;
+}
+
 
 	//$id = mysqli_real_escape_string($db, $_GET['events_id']);
 
