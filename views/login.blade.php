@@ -29,3 +29,5 @@
     </div>
 
 @endsection
+
+insert into member_activities value activity_id, member_id where

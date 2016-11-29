@@ -10,12 +10,14 @@
 
 	@foreach ( $activities as $rows ) 
 	<div>
+	<form role="form" method="post" action="select_action.php">
 	    <div class='img' style='background-image:url({{$rows['banner_url']}})'>
 		    <div class='img2'>
 		    <p class='data_info'>{{$rows['title']}}</p> 
 		    <p class='data_info'>{{$rows['description']}}</p>
-		    </div>
+		    <p class='data_info'>{{$rows['id']}}</p>
 	    </div>
+	    <input type="submit" name="btn-submit" id="submit" value="Select" class="btn btn-info pull-right">
     </div>	
 	@endforeach
 	
