@@ -49,8 +49,9 @@ if ($query->execute(array($Email)))
 $sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, validation_token) VALUES (?, ?, ?, ?, ?, ?, ?)");
 if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam, $Validation_token)))
 {
-	require 'inc/validation_mail.php';
-	$_SESSION['email'] = $Email;
+	$_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet gevarieerd.';
+	header('Location: validation_mail.php');
+	exit;
 }
 else
 {
@@ -59,5 +60,3 @@ else
 	exit;
 }
 
-header('Location: login.php');
-exit;
