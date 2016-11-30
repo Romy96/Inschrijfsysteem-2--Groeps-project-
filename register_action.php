@@ -49,9 +49,9 @@ if ($query->execute(array($Email)))
 $sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, unhashed_password, gebruikersnaam, validation_token) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Wachtwoord, $Gebruikersnaam, $Validation_token)))
 {
-	$_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet gevarieerd.';
-	header('Location: validation_mail.php');
-	exit;
+	require 'inc/validation_mail.php';
+	$result = SendActivationEmail($Email, $Voornaam);
+	$_SESSION['errors'][] = 'The result of SendActivationEmail($Email, $Voornaam) is: ' . $result;
 }
 else
 {
@@ -60,3 +60,6 @@ else
 	exit;
 }
 
+$_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet gevarieerd.';
+header('Location: login.php');
+exit;
