@@ -22,6 +22,11 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
+                <div class="form-group">        
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <a href="password_forget.php">Wachtwoord vergeten?</a>
+                  </div>
+                </div>
                   <input name="remember" type="checkbox" value="checked"> Onthoud mij <br>
                 <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
             </div>

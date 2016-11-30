@@ -4,14 +4,6 @@ require_once 'inc/blade.php';
 require_once 'inc/connection.php';
 $errors = [];
 
-   if ( isset($_SESSION['errors'])) {
-      $errors = $_SESSION['errors'];
-      $_SESSION['errors'] = array();  // remove all errors
-   } 
-   else
-   {
-      $_SESSION['errors'] = array();
-   }
 
    //$sth = $db->prepare("SELECT * FROM members WHERE id=? AND validation_token=?");
 	//$sth->execute();

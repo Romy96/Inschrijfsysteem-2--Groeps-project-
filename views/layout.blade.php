@@ -14,10 +14,10 @@
 @if(isset($_SESSION['userEmail']))
 	<span class="">Gebruiker: {{ $_SESSION['userEmail'] }}</span>
 	<span class="">Id = {{ $_SESSION['userId'] }}</span>
-	<span class="" style="float:right;"><a href="logout_action.php">Logout</a></span>
+	<span class="" style="float:right;"><a class="navbar_link" href="logout_action.php">Logout</a></span>
 @else
-	<span class="" style="float:right;"><a href="register.php">Registreren</a></span>
-	<span class="" style="float:right;"><a href="login.php">Login</a></span>
+	<span class="" style="float:right;"><a class="navbar_link" href="register.php">Registreren</a></span>
+	<span class="" style="float:right;"><a class="navbar_link" href="login.php">Login</a></span>
 @endif
 <span style="float:left;"></span>
 </div>
