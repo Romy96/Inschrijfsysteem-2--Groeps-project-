@@ -17,12 +17,12 @@
 				<div class="col-sm-6 col-sm-offset-3">
 					<p>Thank you for making a account on our website!</p>
 					<p>But before you can officially use your account, please click on the validation link down below.</p>
-					<a href="validate_action.php">Validation link</a>
+					@if (isset($user))
+					<a href="validate_action.php?id={{$user['id']}}&token={{$user['validation_token']}}">Validation link</a>
+					@endif
 				</div><!--/col-sm-6-->
 			</div><!--/row-->
 		</div>
 	</body>
 </html>
 
-
-@endsection

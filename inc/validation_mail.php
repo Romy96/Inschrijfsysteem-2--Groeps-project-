@@ -33,7 +33,7 @@ function SendActivationEmail($Email, $Voornaam) {
 
 //	$msg = $blade->view()->make('sendmail')->render();
 
-	$mail->msgHTML(file_get_contents('views/validationmail.html');
+	$mail->msgHTML(file_get_contents('views/validate_account.blade.php'), dirname(__FILE__));
 	//Replace the plain text body with one created manually
 	$mail->AltBody = 'Your e-mail client does not support HTML emails.';
 	
