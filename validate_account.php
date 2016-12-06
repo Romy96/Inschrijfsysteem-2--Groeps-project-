@@ -13,5 +13,5 @@ return $id;
 $user = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 
-echo $blade->view()->make('validate_account')->with($user, 'user')->withErrors($errors)->render();
+echo $blade->view()->make('validate_account')->with('user', $user)->withErrors($errors)->render();
 
