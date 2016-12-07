@@ -3,7 +3,7 @@ require_once 'inc/crud.php';
 require 'inc/connection.php';
 require 'inc/session.php';
 
-$activiy_id = $_POST['activity_id'];
+$activity_id = $_POST['activity_id'];
 $member_id = $_POST['member_id'];
 
 if ( empty($_POST['activity_id']) || empty($_POST['member_id'])) {
