@@ -15,11 +15,10 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
+					<p>Dear {{$Voornaam}}</p>
 					<p>Thank you for making a account on our website!</p>
 					<p>But before you can officially use your account, please click on the validation link down below.</p>
-					@if (isset($user))
-					<a href="validate_action.php?id={{$user['id']}}&token={{$user['validation_token']}}">Validation link</a>
-					@endif
+					<a href="http://localhost/validate_action.php?id={{$id}}&token={{$Validation_token}}">Validation link</a>
 				</div><!--/col-sm-6-->
 			</div><!--/row-->
 		</div>

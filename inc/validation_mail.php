@@ -1,16 +1,16 @@
 <?php
 
-// use Philo\Blade\Blade;
+	use Philo\Blade\Blade;
 
-function SendActivationEmail($Email, $Voornaam) {
+function SendActivationEmail($id, $Email, $Voornaam, $Validation_token) {
     require_once 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
     require_once 'inc/password.php';
 
-//    require 'vendor/autoload.php';
-//    $views = __DIR__ . '/../views';		// blade.php now sits in /inc folder, so prefix views folder with /../
-//    $cache = __DIR__ . '/../cache';		// so $views and $cache still point to valid filesystem folder
+	require 'vendor/autoload.php';
+	$views = __DIR__ . '/../views';		// blade.php now sits in /inc folder, so prefix views folder with /../
+	$cache = __DIR__ . '/../cache';		// so $views and $cache still point to valid filesystem folder
 //
-//    $blade = new Blade($views, $cache);
+	$blade = new Blade($views, $cache);
 
 	$mail = new PHPMailer();
     $mail->IsSMTP();
@@ -33,9 +33,9 @@ function SendActivationEmail($Email, $Voornaam) {
 //  Read an HTML message body from an external file, convert referenced images to embedded,
 //  convert HTML into a basic plain-text alternative body
 
-//	$msg = $blade->view()->make('sendmail')->render();
+	$msg = $blade->view()->make('validate_account')->with(array('id' => $id, 'Voornaam' => $Voornaam, 'Validation_token' => $Validation_token))->render();
 
-	$mail->msgHTML(file_get_contents('views/validate_account.blade.php'), dirname(__FILE__));
+	$mail->msgHTML($msg);
 	//Replace the plain text body with one created manually
 	$mail->AltBody = 'Your e-mail client does not support HTML emails.';
 	
