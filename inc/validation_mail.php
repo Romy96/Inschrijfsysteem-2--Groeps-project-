@@ -11,11 +11,12 @@ function SendActivationEmail($Email, $Voornaam) {
 //    $cache = __DIR__ . '/../cache';		// so $views and $cache still point to valid filesystem folder
 //
 //    $blade = new Blade($views, $cache);
+
 	$mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->Mailer = "smtp";
     $mail->Host = "mail.smtp2go.com";
-    $mail->Port = "2525"; // 8025, 587 and 25 can also be used. Use Port 465 for SSL.
+    $mail->Port = "80"; // 8025, 587 and 25 can also be used. Use Port 465 for SSL.
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = 'tls';
     $mail->Username = $username_smtp2go;
