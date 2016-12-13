@@ -2,7 +2,7 @@
 
 	use Philo\Blade\Blade;
 
-function SendActivationEmail($id, $Email, $Voornaam, $Validation_token) {
+function SendPasswordEmail($Gebruikersnaam, $Email) {
     require_once 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
     require_once 'inc/password.php';
 
@@ -25,15 +25,15 @@ function SendActivationEmail($id, $Email, $Voornaam, $Validation_token) {
     $mail->From     = $username_smtp2go;
     $mail->FromName = "Romy Bijkerk";
 	//Set who the message is to be sent to
-	$mail->addAddress($Email);
-	$mail->AddReplyTo($Email);
+	$mail->addAddress($Email, $Gebruikersnaam);
+	$mail->AddReplyTo($Email, $Gebruikersnaam);
 	//Set the subject line
-	$mail->Subject = 'Account verification';
+	$mail->Subject = 'New password';
 
 //  Read an HTML message body from an external file, convert referenced images to embedded,
 //  convert HTML into a basic plain-text alternative body
 
-	$msg = $blade->view()->make('validate_account')->with(array('id' => $id, 'Voornaam' => $Voornaam, 'Validation_token' => $Validation_token))->render();
+	$msg = $blade->view()->make('New_password')->with(array('Email' => $Email, 'Gebruikersnaam' => $Gebruikersnaam))->render();
 
 	$mail->msgHTML($msg);
 	//Replace the plain text body with one created manually
