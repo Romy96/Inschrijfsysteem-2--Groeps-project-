@@ -18,7 +18,7 @@
 					<p>Dear {{$Voornaam}}</p>
 					<p>Thank you for making a account on our website!</p>
 					<p>But before you can officially use your account, please click on the validation link down below.</p>
-					<a href="http://localhost/validate_action.php?id={{$id}}&token={{$Validation_token}}">Validation link</a>
+					<a href="http://localhost/inschrijfsysteem_2/validate_action.php?id={{$id}}&token={{$Validation_token}}">Validation link</a>
 				</div><!--/col-sm-6-->
 			</div><!--/row-->
 		</div>

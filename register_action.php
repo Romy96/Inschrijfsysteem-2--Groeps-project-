@@ -61,6 +61,7 @@ else
 	exit;
 }
 
+
 $_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet gevarieerd.';
 header('Location: login.php');
 exit;

@@ -1,5 +1,5 @@
 <?php
-
+require 'inc/crud.php';
 require 'inc/connection.php';
 require 'inc/session.php';
 
@@ -10,31 +10,31 @@ $id = $_GET['id'];
 $Validation_token = $_GET['token'];
 
 // compare token from that user, with token in URL   $_GET['token']
-$query = $db->prepare("SELECT * FROM members WHERE validation_token=?");
-if ($query->execute(array($Validation_token))) {
+$query = $db->prepare("SELECT * FROM members WHERE id=? AND validation_token=?");
+if ($query->execute(array($id, $Validation_token))) {
 	if ($query->rowCount() == 0) {
 		$_SESSION['errors'][] = "De token is niet gevonden of ze zijn niet hetzelfde.";
-		header('Location: http://localhost/register.php');
+		header('Location: register.php');
 		exit;
 	}
 }
 
 // sla in database op dat voor deze user het veld 'active' = 1, en token moet leeg worden "" 
 $sql = $db->prepare("UPDATE members SET active=1 AND validation_token='' WHERE id=?");
-if ($sql->execute(array($id, $Validation_token))) {
+if ($sql->execute(array($id))) {
 	if ($sql->rowCount() == 0) {
 		$_SESSION['errors'][] = "Uw account is niet gevonden!";
-		header('Location: http://localhost/register.php');
+		header('Location: register.php');
 		exit;
 	}
 	if ($sql->rowCount() > 1) {
 		$_SESSION['errors'][] = "Het haalt teveel rijen op!";
-		header('Location: http://localhost/register.php');
+		header('Location: register.php');
 		exit;
 	}
 	if ($sql->rowCount() == 1) {
 		$_SESSION['errors'][] = "Uw account is officieel geactiveerd!";
-		header('Location: http://localhost/index.php');
+		header('Location: login.php');
 		exit;
 	}
 }

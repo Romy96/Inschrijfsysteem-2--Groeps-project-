@@ -18,7 +18,7 @@
 					<p>Beste {{$Gebruikersnaam}}</p>
 					<p>U heeft een aanvraag gedaan voor een nieuwe wachtwoord</p>
 					<p>Klik op dit link onder deze tekst om een nieuwe wachtwoord in te vullen</p>
-					<a href="http://localhost/insert_new_password.php?Gebruikersnaam={{$Gebruikersnaam}}">Validation link</a>
+					<a href="http://localhost/inschrijfsysteem_2/insert_new_password.php?Gebruikersnaam={{$Gebruikersnaam}}">Validation link</a>
 				</div><!--/col-sm-6-->
 			</div><!--/row-->
 		</div>
