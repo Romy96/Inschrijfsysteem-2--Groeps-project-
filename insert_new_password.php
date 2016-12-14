@@ -11,6 +11,8 @@ $Gebruikersnaam = $_GET['Gebruikersnaam'];
 $query = $db->prepare("SELECT * FROM members WHERE gebruikersnaam=?");
 if ($query->execute(array($Gebruikersnaam))) {
 	$user = $query->fetchAll(PDO::FETCH_ASSOC);
+	$username = $user[0]['gebruikersnaam'];
+
 	if ($query->rowCount() == 0) {
 		$_SESSION['errors'][] = 'Kan gebruiker met gebruikersnaam'. $Gebruikersnaam . ' niet vinden';
 	}
@@ -19,4 +21,4 @@ if ($query->execute(array($Gebruikersnaam))) {
 	}
 }
 
-echo $blade->view()->make('insert_new_password')->with('user', $user)->withErrors($errors)->render();
+echo $blade->view()->make('insert_new_password')->with('username', $username)->withErrors($errors)->render();
