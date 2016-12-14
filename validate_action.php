@@ -20,8 +20,9 @@ if ($query->execute(array($id, $Validation_token))) {
 }
 
 // sla in database op dat voor deze user het veld 'active' = 1, en token moet leeg worden "" 
-$sql = $db->prepare("UPDATE members SET active=1 AND validation_token='' WHERE id=?");
+$sql = $db->prepare("UPDATE members SET active=1, validation_token='' WHERE id=?");
 if ($sql->execute(array($id))) {
+
 	if ($sql->rowCount() == 0) {
 		$_SESSION['errors'][] = "Uw account is niet gevonden!";
 		header('Location: register.php');
