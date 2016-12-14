@@ -1,11 +1,9 @@
 <?php 
-
  require_once 'inc/session.php';
  require_once 'inc/blade.php';
+ require_once'inc/connection.php';
  $errors = [];
 
-
-	require 'inc/connection.php';
 
 	$id = $_GET['id'];
 
@@ -14,7 +12,7 @@
 
 	if ($sth->execute(array($id)))
 	{
-  		$event = $sth->fetchAll(PDO::FETCH_ASSOC);	
+  		$events = $sth->fetchAll(PDO::FETCH_ASSOC);	
   		if ( $sth->rowCount() == 0 ) $_SESSION['errors'][] = 'Kan event met id '. $id .' niet vinden';
 		if ( $sth->rowCount() > 1 ) $_SESSION['errors'][] = 'Je haalt teveel rijen op';
 	}
@@ -29,8 +27,8 @@
 	/* Fetch all of the remaining rows in the result set */
 	$activities = $sth->fetchAll(PDO::FETCH_ASSOC);
 
+
 	// tell blade to create HTML from the template "login.blade.php"
 	echo $blade->view()->make('event_activities')
-	->with('event', $event)
+	->with('events', $events)
 	->with('activities', $activities)->withErrors($errors)->render();
-

@@ -2,24 +2,29 @@
 
 @section('content')
 
-	@foreach ( $event as $row )
-		<div class='banner' style='background-image:url({{$row['large_banner_url']}})'>	
-			<h1 class='title'>{{$row['title']}}</h1>
+	@foreach ( $events as $event )
+		<div class='banner' style='background-image:url({{$event['large_banner_url']}})'>	
+			<h1 class='title'>{{$event['title']}}</h1>
 		</div>
 	@endforeach
 
-	@foreach ( $activities as $rows ) 
-	<div>
-	<form role="form" method="post" action="select_action.php">
-	    <div class='img' style='background-image:url({{$rows['banner_url']}})'>
-		    <div class='img2'>
-		    <p class='data_info'>{{$rows['title']}}</p> 
-		    <p class='data_info'>{{$rows['description']}}</p>
-		    <p class='data_info'>{{$rows['id']}}</p>
-	    </div>
-	    <input type="submit" name="btn-submit" id="submit" value="Select" class="btn btn-info pull-right">
-    </div>	
+	@foreach ( $activities as $activity ) 
+	<div> 
+		<form method="POST" action="select_action.php">
+		    <div class='img' style='background-image:url({{$activity['banner_url']}})'>
+			    <div class='img2'>
+				    <p class='data_info'>{{$activity['title']}}</p> 
+				    <p class='data_info'>{{$activity['description']}}</p>
+				    <input type="checkbox" name="activity_id" value="{{$activity['id']}}" />
+			    </div>
+
+		    	<input type="submit" name="submit" id="submit" value="Select" class="btn btn-info pull-right">
+		    </div>
+	    </form>	
+    </div>
 	@endforeach
+
+
 	
 
 @endsection

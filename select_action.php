@@ -1,26 +1,30 @@
 <?php
 require_once 'inc/crud.php';
-require 'inc/connection.php';
-require 'inc/session.php';
+require_once 'inc/connection.php';
+require_once 'inc/session.php';
+require_once 'event_activities.php';
 
-$activity_id = $_POST['activity_id'];
-$member_id = $_POST['member_id'];
 
-if ( empty($_POST['activity_id']) || empty($_POST['member_id'])) {
-	$_SESSION['errors'][] = 'Één van de velden of meer zijn niet ingevuld.';
-	header('Location: events.php');
+if ( empty($_POST['submit'])) {
+	$_SESSION['errors'][] = 'Geen inzending ontvangen.';
+	header('Location: events.php');	// fix this? 
 	exit;
 }
 
-$sql = $db->prepare("SELECT * FROM members WHERE gebruikersnaam=?");
-if ($sql->execute(array($Gebruikersnaam)))
-	{
-		if ( $sql->rowCount() > 0 ) {
-			$_SESSION['errors'][] = 'De gebruikersnaam bestaat al!';
-			header('Location: events.php');
-			exit;
-		}
-	}
+$activity_id = $_POST['activity_id'];
+$member_id = $_SESSION['userId'];
+
+if ( empty($activity_id)) {
+	$_SESSION['errors'][] = 'Het activity id werd niet meegegeven ';
+	header('Location: events.php');	// fix this? 
+	exit;
+}
+
+if ( empty($member_id)) {
+	$_SESSION['errors'][] = 'Het member id werd niet meegegeven ';
+	header('Location: events.php');
+	exit;
+}
 
 $sth = $db->prepare("INSERT INTO members_activities (activity_id, member_id) VALUES (?, ?)");
 if ($sth->execute(array($activity_id, $member_id)))

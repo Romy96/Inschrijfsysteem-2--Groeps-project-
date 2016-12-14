@@ -4,14 +4,14 @@
 
 	<h1>Evenementen</h1>
 
-	@foreach ( $events as $row ) 
+	@foreach ( $events as $event ) 
 	<div>
-		<a href="event_activities.php?id={{$row['id']}}">
-		    <div class='img' style='background-image:url({{$row['small_banner_url']}})'>
+		<a href="event_activities.php?id={{$event['id']}}">
+		    <div class='img' style='background-image:url({{$event['small_banner_url']}})'>
 				<div class='img2'>
-				    <p class='data_info'>{{$row['title']}}</p> 
-				    <p class='data_info'>{{$row['start_date']}}</p>
-				   	<p class='data_info'>{{$row['end_date']}}</p> 
+				    <p class='data_info'>{{$event['title']}}</p> 
+				    <p class='data_info'>{{$event['start_date']}}</p>
+				   	<p class='data_info'>{{$event['end_date']}}</p> 
 			    </div>
 		    </div>
 	    </a>
