@@ -46,13 +46,12 @@ if ($query->execute(array($Email)))
 		}
 	}
 
-$sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, unhashed_password, gebruikersnaam, validation_token) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Wachtwoord, $Gebruikersnaam, $Validation_token)))
+$sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, validation_token) VALUES (?, ?, ?, ?, ?, ?, ?)");
+if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam, $Validation_token)))
 {
 	$id = $db->lastInsertId();
 	require 'inc/validation_mail.php';
 	$result = SendActivationEmail($id, $Email, $Voornaam, $Validation_token);
-	$_SESSION['errors'][] = 'The result of SendActivationEmail($Email, $Voornaam) is: ' . $result;
 }
 else
 {

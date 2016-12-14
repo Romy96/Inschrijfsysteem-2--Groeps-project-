@@ -16,8 +16,8 @@ if ($Wachtwoord !== $Herhaal_wachtwoord) {
 }
 
 
-$query = $db->prepare("UPDATE members SET wachtwoord=?, unhashed_password=? WHERE gebruikersnaam=?");
-if ($query->execute(array($Wachtwoord, $Hash, $Gebruikersnaam))) {
+$query = $db->prepare("UPDATE members SET wachtwoord=? WHERE gebruikersnaam=?");
+if ($query->execute(array($Hash, $Gebruikersnaam))) {
 	if ($query->rowCount() == 0) {
 		$_SESSION['errors'][] = 'De gegevens zijn niet gevonden of er is iets foutgegaan!';
 		header('Location: insert_new_password.php?Gebruikersnaam=' . $Gebruikersnaam);

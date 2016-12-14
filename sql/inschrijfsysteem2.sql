@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: 127.0.0.1
--- Gegenereerd op: 30 nov 2016 om 11:45
+-- Gegenereerd op: 14 dec 2016 om 13:40
 -- Serverversie: 5.6.17
 -- PHP-versie: 5.5.12
 
@@ -81,23 +81,13 @@ CREATE TABLE IF NOT EXISTS `members` (
   `achternaam` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `wachtwoord` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `unhashed_password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `gebruikersnaam` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `active` int(1) NOT NULL DEFAULT '0',
-  `validation_token` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `validation_token` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `gebruikersnaam` (`gebruikersnaam`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
-
---
--- Gegevens worden geëxporteerd voor tabel `members`
---
-
-INSERT INTO `members` (`id`, `voornaam`, `voorvoegsel`, `achternaam`, `email`, `wachtwoord`, `unhashed_password`, `gebruikersnaam`, `active`, `validation_token`) VALUES
-(1, 'Romy', '', 'Bijkerk', 'romy-bijkerk@hotmail.com', 'Htmldiv1', '', 'Romy96', 0, ''),
-(2, 'Sandra', 'van der', 'Sluis', 'sandradejager69@gmail.com', 'Leeuw69', '', 'Sandra69', 0, ''),
-(3, 'Kevin', '', 'Kok', 'Admin@davinci.nl', '$2y$10$HNdgX9Y7U4zWbWnBGh1fXOuMDCSyUk0bjKyvAPbP.YFP.7WpW6gwu', 'Studentje1', 'Admin', 0, 'TCFMj57tQY');
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=61 ;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
