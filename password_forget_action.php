@@ -4,6 +4,13 @@ require_once 'inc/session.php';
 require 'inc/connection.php';
 require 'inc/crud.php';
 
+
+if (empty($_POST['submit'])) {
+	$_SESSION['errors'][] = 'Je hebt niks ingevuld!';
+	header('Location: login.php');
+	exit; 
+}
+
 $Gebruikersnaam = $_GET['gebruikersnaam'];
 $Email = $_GET['email'];
 
