@@ -15,9 +15,8 @@
 			    <div class='img2'>
 				    <p class='data_info'>{{$activity['title']}}</p> 
 				    <p class='data_info'>{{$activity['description']}}</p>
-				    <input type="checkbox" name="activity_id" value="{{$activity['id']}}" />
+				    <input type="hidden" name="activity_id" value="{{$activity['id']}}" />
 			    </div>
-
 		    	<input type="submit" name="submit" id="submit" value="Select" class="btn btn-info pull-right">
 		    </div>
 	    </form>	
