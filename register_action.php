@@ -4,6 +4,12 @@ require 'inc/connection.php';
 require 'inc/session.php';
 require 'inc/random.php';
 
+if (empty($_POST['submit'])) {
+	$_SESSION['errors'][] = 'Je hebt niks ingevuld!';
+	header('location: register.php');
+	exit; 
+}
+
 $Voornaam = $_POST['voornaam'];
 $Voorvoegsel = $_POST['tussenvoegsel'];
 $Achternaam = $_POST['achternaam'];
