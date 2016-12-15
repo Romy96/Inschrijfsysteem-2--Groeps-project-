@@ -13,6 +13,7 @@
 		<form method="POST" action="select_action.php">
 		    <div class='img' style='background-image:url({{$activity['banner_url']}})'>
 			    <div class='img2'>
+				    <p class='data_info'>[{{$activity['ingeschreven']}}]</p> 
 				    <p class='data_info'>{{$activity['title']}}</p> 
 				    <p class='data_info'>{{$activity['description']}}</p>
 				    <input type="hidden" name="activity_id" value="{{$activity['id']}}" />
