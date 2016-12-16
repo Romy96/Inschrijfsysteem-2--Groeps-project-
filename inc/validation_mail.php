@@ -25,8 +25,8 @@ function SendActivationEmail($id, $Email, $Voornaam, $Validation_token) {
     $mail->From     = $username_smtp2go;
     $mail->FromName = "Romy Bijkerk";
 	//Set who the message is to be sent to
-	$mail->addAddress($Email);
-	$mail->AddReplyTo($Email);
+	$mail->addAddress($Email, $Voornaam);
+	$mail->AddReplyTo($Email, $Voornaam);
 	//Set the subject line
 	$mail->Subject = 'Account verification';
 
