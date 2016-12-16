@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 15 dec 2016 om 13:47
+-- Gegenereerd op: 16 dec 2016 om 10:01
 -- Serverversie: 10.1.16-MariaDB
 -- PHP-versie: 5.6.24
 
@@ -82,17 +82,18 @@ CREATE TABLE `members` (
   `voorvoegsel` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `achternaam` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `active` int(1) NOT NULL DEFAULT '0',
-  `unhashed_password` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `unhashed_password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `validation_token` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `members`
 --
 
-INSERT INTO `members` (`id`, `email`, `gebruikersnaam`, `wachtwoord`, `voornaam`, `voorvoegsel`, `achternaam`, `active`, `unhashed_password`) VALUES
-(1, 'romy-bijkerk@hotmail.com', 'Romy96', 'Htmldiv1', 'Romy', '', 'Bijkerk', 0, ''),
-(4, 'Admin@davinci.nl', 'Admin', '$2y$10$ytVpKNWI44xAufGLqScz5O/iM2I2GZsD/8CrrBguiQv2Bv4057/bm', 'Kevin', '', 'Drakenpen', 1, 'Studentje1'),
-(5, 'ecyrecseys@live.nl', 'ecysrcyesrec', '$2y$10$ytVpKNWI44xAufGLqScz5O/iM2I2GZsD/8CrrBguiQv2Bv4057/bm', 'vcyre', 'ecyrseycr', 'eycrsyec', 1, 'Studentje1');
+INSERT INTO `members` (`id`, `email`, `gebruikersnaam`, `wachtwoord`, `voornaam`, `voorvoegsel`, `achternaam`, `active`, `unhashed_password`, `validation_token`) VALUES
+(1, 'romy-bijkerk@hotmail.com', 'Romy96', 'Htmldiv1', 'Romy', '', 'Bijkerk', 0, '', NULL),
+(4, 'Admin@davinci.nl', 'Admin', '$2y$10$ytVpKNWI44xAufGLqScz5O/iM2I2GZsD/8CrrBguiQv2Bv4057/bm', 'Kevin', '', 'Drakenpen', 1, 'Studentje1', NULL),
+(5, 'ecyrecseys@live.nl', 'ecysrcyesrec', '$2y$10$ytVpKNWI44xAufGLqScz5O/iM2I2GZsD/8CrrBguiQv2Bv4057/bm', 'vcyre', 'ecyrseycr', 'eycrsyec', 1, 'Studentje1', NULL);
 
 -- --------------------------------------------------------
 
