@@ -16,8 +16,11 @@
 				    <p class='data_info'>[{{$activity['ingeschreven']}}]</p> 
 				    <p class='data_info'>{{$activity['title']}}</p> 
 				    <p class='data_info'>{{$activity['description']}}</p>
-				    <input type="hidden" name="activity_id" value="{{$activity['id']}}" />
 			    </div>
+                
+                <input type="hidden" name="activity_id" value="{{ $activity['id'] }}" >
+                <input type="hidden" name="member_id" value="{{ $userid }}" >
+
 		    	<input type="submit" name="submit" id="submit" value="Select" class="btn btn-info pull-right">
 		    </div>
 	    </form>	

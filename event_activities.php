@@ -3,12 +3,10 @@
  require_once 'inc/blade.php';
  require_once'inc/connection.php';
  $errors = [];
-
 // go away if user not logged in
 if ( empty($_SESSION['userId'])) {
     die('not allowed if not logged in.');
 }
-
 
 	$id = $_GET['id'];
 
@@ -26,20 +24,18 @@ if ( empty($_SESSION['userId'])) {
 		$_SESSION['errors'][] = 'Het is niet gelukt om de gegevens op te halen.';
 	}
 
-    $userid = $_SESSION['userId'];        // TODO: zorg dat het ID van de ingelogde user uit de sessie wordt opgehaald ipv 7
+    $userid = $_SESSION['userId']; 
 	$sth = $db->prepare("SELECT activities.id as id, activities.event_id, activities.title, activities.banner_url, activities.description,
-  (  select count(ma.activity_id) as aantal
-	  from members_activities ma
+    ( select count(ma.activity_id) as aantal
+	  from members_activities ma 
 	  where ma.member_id = ? 
 	  and ma.activity_id = activities.id  
-   ) as ingeschreven
-FROM activities
-WHERE activities.event_id = ?");
+    ) as ingeschreven
+    FROM activities
+    WHERE activities.event_id = ?");
 	$sth->execute(array($userid, $id));
 	/* Fetch all of the remaining rows in the result set */
-	$activities = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-
+	$activities = $sth->fetchAll(PDO::FETCH_ASSOC); 
 	// tell blade to create HTML from the template "login.blade.php"
 	echo $blade->view()->make('event_activities')
 	->with('events', $events)
