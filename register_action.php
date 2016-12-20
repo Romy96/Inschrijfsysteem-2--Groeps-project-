@@ -32,6 +32,15 @@ if ($Wachtwoord !== $Herhaal_wachtwoord) {
 	exit;
 }
 
+if ( strlen( $Wachtwoord ) < 8 ) 
+	{
+   	  	if ( preg_match( "/[^0,9]/", $Wachtwoord ) ) {
+			$_SESSION['errors'][] = 'Uw wachtwoord moet minimaal 8 tekens lang zijn';
+			header('Location: register.php');
+			exit;
+  		}
+}
+
 $sql = $db->prepare("SELECT * FROM members WHERE gebruikersnaam=?");
 if ($sql->execute(array($Gebruikersnaam)))
 	{
