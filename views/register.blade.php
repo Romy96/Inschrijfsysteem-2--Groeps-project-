@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label for="txt_wachtwoord">Wachtwoord</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="Vul een wachtwoord in">
+                        <input type="password" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord moet minimaal 8 tekens lang zijn">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
