@@ -4,11 +4,6 @@ require 'inc/connection.php';
 require 'inc/session.php';
 require 'inc/random.php';
 
-if (empty($_POST['submit'])) {
-	$_SESSION['errors'][] = 'Je hebt niks ingevuld!';
-	header('location: register.php');
-	exit; 
-}
 
 $Voornaam = $_POST['voornaam'];
 $Voorvoegsel = $_POST['tussenvoegsel'];
@@ -55,14 +50,15 @@ if ($query->execute(array($Email)))
 $sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, validation_token) VALUES (?, ?, ?, ?, ?, ?, ?)");
 if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam, $Validation_token)))
 {
-
-	$_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet geverifieerd.';
-	header('Location: validation_mail.php');
-	exit;
-
 	require 'inc/validation_mail.php';
 
+	$id = $db->lastInsertId();
+
 	$result = SendActivationEmail($id, $Email, $Voornaam, $Validation_token);
+
+	$_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet geverifieerd.';
+	header('Location: login.php');
+	exit;
 }
 else
 {
