@@ -67,5 +67,8 @@
 	</div>
 </div>
 
+<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script src="js/password_verification.js"></script>
+
 </body>
 </html>
