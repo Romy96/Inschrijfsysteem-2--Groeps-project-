@@ -10,10 +10,10 @@ function CheckUserIsValid ($db, $email, $wachtwoord) {
 		return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null];
 	}
 
-	//echo '<p>Password encrypted with SHA: ' . $enc_password . '<br>';
+	$hash = md5($wachtwoord);
 
 	$statement = $db->prepare('SELECT id, gebruikersnaam FROM members where email=? AND wachtwoord=? AND active=1 ;');
-	$statement->execute(array($email, $wachtwoord));
+	$statement->execute(array($email, $hash));
 	$count = $statement->rowCount();
 	$row = $statement->fetch(PDO::FETCH_ASSOC);
 	$userId = $row['id'];

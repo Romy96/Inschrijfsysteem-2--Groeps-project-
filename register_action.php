@@ -4,6 +4,11 @@ require 'inc/connection.php';
 require 'inc/session.php';
 require 'inc/random.php';
 
+if (empty($_POST['submit'])) {
+	$_SESSION['errors'][] = 'Je hebt niks ingevuld!';
+	header('location: register.php');
+	exit; 
+}
 
 $Voornaam = $_POST['voornaam'];
 $Voorvoegsel = $_POST['tussenvoegsel'];
@@ -12,7 +17,7 @@ $Gebruikersnaam = $_POST['gebruikersnaam'];
 $Email = $_POST['email'];
 $Wachtwoord = $_POST['wachtwoord'];
 $Herhaal_wachtwoord = $_POST['wachtwoord2'];
-$Hash = Password_Hash($Wachtwoord, PASSWORD_DEFAULT);
+$Hash = md5($Wachtwoord);
 $Validation_token = generateRandomString(10);
 
 if ( empty($_POST['voornaam']) || empty($_POST['achternaam']) || empty($_POST['gebruikersnaam']) || empty($_POST['email']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord2'])) {
@@ -50,16 +55,14 @@ if ($query->execute(array($Email)))
 $sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, validation_token) VALUES (?, ?, ?, ?, ?, ?, ?)");
 if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam, $Validation_token)))
 {
-	require 'inc/validation_mail.php';
 
-	$id = $db->lastInsertId();
-
-	$result = SendActivationEmail($id, $Email, $Voornaam, $Validation_token);
-
-	$_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet gevalideerd.';
-	header('Location: login.php');
+	$_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet geverifieerd.';
+	header('Location: validation_mail.php');
 	exit;
 
+	require 'inc/validation_mail.php';
+
+	$result = SendActivationEmail($id, $Email, $Voornaam, $Validation_token);
 }
 else
 {
