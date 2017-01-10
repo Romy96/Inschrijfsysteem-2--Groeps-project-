@@ -14,9 +14,9 @@
             @if ($activity['ingeschreven'] == 0)
             <div class='img' style='background-image:url({{$activity['banner_url']}}); border-style:solid; border-width:medium; border-color:red;'> 
             @elseif ($activity['ingeschreven'] > 0)
-            <div class='img' style='background-image:url({{$activity['banner_url']}}); border-style:solid; border-width:medium; border-color:yellow;'>
-            @else
             <div class='img' style='background-image:url({{$activity['banner_url']}}); border-style:solid; border-width:medium; border-color:green;'>
+            @else
+            <div class='img' style='background-image:url({{$activity['banner_url']}}); border-style:solid; border-width:medium; border-color:yellow;'>
             @endif
 			    <div class='img2'>
 				    <p class='data_info'>{{$activity['ingeschreven']}}</p>
