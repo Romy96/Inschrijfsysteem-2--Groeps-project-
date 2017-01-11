@@ -4,10 +4,10 @@
  require_once 'inc/blade.php';
  $errors = [];
 
-if ( IsLoggedInSession()==true ) {
+if ( IsLoggedInSession()==true && CheckUserIsValid($needs_admin) == true ) {
 	// stuur direct door naar main pagina
     $_SESSION['errors'][] = "U bent al ingelogd!";
-	header('location: main.php');
+	header('location: members_list.php');
 	exit;
 }
 else

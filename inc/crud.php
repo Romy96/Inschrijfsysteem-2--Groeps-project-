@@ -1,5 +1,5 @@
 <?php
-function CheckUserIsValid ($db, $email, $wachtwoord) {
+function CheckUserIsValid ($db, $email, $wachtwoord, $needs_admin = false) {
 	// return 0 if email is empty
 	if (empty($email)) {
 		return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null];
@@ -12,23 +12,34 @@ function CheckUserIsValid ($db, $email, $wachtwoord) {
 
 	$hash = md5($wachtwoord);
 
-	$statement = $db->prepare('SELECT id, gebruikersnaam FROM members where email=? AND wachtwoord=? AND active=1 ;');
+	$statement = $db->prepare('SELECT id, gebruikersnaam, IsAdmin FROM members where email=? AND wachtwoord=? AND active=1 ;');
 	$statement->execute(array($email, $hash));
 	$count = $statement->rowCount();
 	$row = $statement->fetch(PDO::FETCH_ASSOC);
 	$userId = $row['id'];
 	$Gebruikersnaam = $row['gebruikersnaam'];
+	$IsAdmin = $row['IsAdmin'];
 
 	// user/pass combination found; return 1.
 	if ($count == 1) {
-		return ['result' => 1, 'userId' => $userId, 'userEmail' => $email, 'Gebruikersnaam' => $Gebruikersnaam];
-	}
-	else
-	{
-		return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null];
-	}
+		if ($needs_admin == true) {
+				if ($IsAdmin == 1) {
+					return ['result' => 1, 'userId' => $userId, 'userEmail' => $email, 'Gebruikersnaam' => $Gebruikersnaam, 'IsAdmin' => $needs_admin];
+				} 
+				else {
+					return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null, 'IsAdmin' => null];
+				}
+			}
+			else{
+				return ['result' => 1, 'userId' => $userId, 'userEmail' => $email, 'Gebruikersnaam' => $Gebruikersnaam];			
+			}	
+		}
+		else
+		{
+			return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null];
+		}
 
-}
+	}
 
 function IsLoggedIn() {
 

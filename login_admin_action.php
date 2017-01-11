@@ -13,8 +13,15 @@ if ( empty($_POST['wachtwoord']) ) {
 	$_SESSION['errors'][] = 'Fout: Geen wachtwoord ingevuld.';
 }
 
+
 // check if user can be found
-if (empty($_SESSION['errors'])) $resultarray = CheckUserIsValid($db, $_POST['email'], $_POST['wachtwoord']);
+if (empty($_SESSION['errors'])) $resultarray = CheckUserIsValid($db, $_POST['email'], $_POST['wachtwoord'], true);
+
+if ( $resultarray['IsAdmin'] == 0 ) {
+	$_SESSION['errors'][] = 'Fout: Uw account is geen beheerder!';
+	header('Location: main.php');
+	exit;
+}
 
 if ( $resultarray['result'] == 1 ) {
 	LoginSession($resultarray['userId'], $resultarray['userEmail'], $resultarray['Gebruikersnaam']);
@@ -24,7 +31,7 @@ if ( $resultarray['result'] == 1 ) {
 		RememberCookie($resultarray['userId'], $resultarray['userEmail'], $resultarray['Gebruikersnaam']);
 	}
 
-	header('Location: events.php');
+	header('Location: members_list.php');
 	exit;	
 }
 else

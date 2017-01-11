@@ -164,5 +164,6 @@
 <script src="js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
+<script src="js/password_verification.js"></script>
 </body>
 </html>

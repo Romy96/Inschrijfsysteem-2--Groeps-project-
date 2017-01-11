@@ -5,4 +5,4 @@
  $errors = [];
 
  // output everything
-echo $blade->view()->make('menu')->withErrors($errors)->render();
+echo $blade->view()->make('backend/menu')->withErrors($errors)->render();
