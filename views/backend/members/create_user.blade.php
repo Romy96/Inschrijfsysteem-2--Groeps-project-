@@ -4,6 +4,8 @@
 
 <h1>Creëren account</h1>
 
+<?php var_export($errors) ?>
+
     <div class="row">
         <form role="form" method="post" action="create_user_action.php">
             <div class="col-lg-6">
@@ -11,8 +13,8 @@
                 <div class="form-group">
                     <label for="txt_voornaam">Wordt deze account een beheerdersaccount?</label>
                     <div class="input-group">
-                        <label class="checkbox-inline"><input type="checkbox" id="ja" name="ja" value="">Ja</label>
-						<label class="checkbox-inline"><input type="checkbox" id="nee" name="nee" value="">Nee</label>
+                        <label class="checkbox-inline"><input type="checkbox" id="ja" name="ja" value="1">Ja</label>
+						<label class="checkbox-inline"><input type="checkbox" id="nee" name="nee" value="0">Nee</label>
                     </div>
                 </div>
                 <div class="form-group">

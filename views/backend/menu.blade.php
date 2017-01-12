@@ -69,8 +69,8 @@
         <li class="treeview">
         @if(isset($_SESSION['userEmail']))
             <li><a href="logout_action.php"><i class="fa fa-circle-o"></i>Logout</a></li>
-            <li><a href="Events_list.php"><i class="fa fa-circle-o"></i>Evenementen</a></li>
-            <li><a href="users.php"><i class="fa fa-circle-o"></i>Gebruikers</a></li>
+            <li><a href="events_list.php"><i class="fa fa-circle-o"></i>Evenementen</a></li>
+            <li><a href="members_list.php"><i class="fa fa-circle-o"></i>Gebruikers</a></li>
         @else
             <li><a href="Login.php"><i class="fa fa-circle-o"></i>Login</a></li>
         @endif

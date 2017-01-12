@@ -11,6 +11,8 @@ $Gebruikersnaam = $_POST['gebruikersnaam'];
 $Email = $_POST['email'];
 $Wachtwoord = $_POST['wachtwoord'];
 $Herhaal_wachtwoord = $_POST['wachtwoord2'];
+$IsAdmin = $_POST['ja'];
+$IsGebruiker = $_POST['nee'];
 $Hash = md5($Wachtwoord);
 
 if ( empty($_POST['voornaam']) || empty($_POST['achternaam']) || empty($_POST['gebruikersnaam']) || empty($_POST['email']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord2'])) {
@@ -54,29 +56,37 @@ if ($query->execute(array($Email)))
 		}
 	}
 
-if (isset($_POST['ja'])) {
-	$sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, active, IsAdmin) VALUES (?, ?, ?, ?, ?, ?, 1, 1)");
-	if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam)))
-	{
-		if ($sth->rowCount() > 1) {
-			$_SESSION['errors'][] = "U maakt teveel rijen";
-		}
-	}
-
-}
-else
-{
-	$_SESSION['errors'][] = 'Er is iets fout gegaan. Probeer het later nog eens.';
-	header('Location: create_user.php');
-	exit;
-}
-
-if (isset($_POST['nee'])) {
+if (isset($_POST['ja']) && $_POST['ja'] == 1) {
 	$sth = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, active, IsAdmin) VALUES (?, ?, ?, ?, ?, ?, 1, ?)");
-	if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam)))
+	if ($sth->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam, $IsAdmin)))
 	{
 		if ($sth->rowCount() > 1) {
 			$_SESSION['errors'][] = "U maakt teveel rijen";
+			header('location: create_user.php');
+			exit;
+		}
+		if ($sth->rowCount() == 1) {
+			$_SESSION['errors'][] = "Een nieuwe beheerdersaccount is toegevoegd";
+			header('location: members_list.php');
+			exit;
+		}
+	}
+
+}
+
+elseif (isset($_POST['nee']) && $_POST['nee'] == 0) {
+	$insertsql = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, active, IsAdmin) VALUES (?, ?, ?, ?, ?, ?, 1, ?)");
+	if ($insertsql->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam, $IsGebruiker)))
+	{
+		if ($insertsql->rowCount() > 1) {
+			$_SESSION['errors'][] = "U maakt teveel rijen";
+			header('location: create_user.php');
+			exit;
+		}
+		if ($insertsql->rowCount() == 1) {
+			$_SESSION['errors'][] = "Een nieuwe gebruikersaccount is toegevoegd";
+			header('location: members_list.php');
+			exit;
 		}
 	}
 
@@ -88,6 +98,4 @@ else
 	exit;
 }
 
-$_SESSION['errors'][] = 'De ingevoerde gegevens zijn opgeslagen in de database, maar nog niet gevarieerd.';
-header('Location: members_list.php');
-exit;
+
