@@ -71,12 +71,10 @@ if (isset($_POST['ja']) && $_POST['ja'] == 1) {
 			exit;
 		}
 	}
-
 }
-
-elseif (isset($_POST['nee']) && $_POST['nee'] == 0) {
-	$insertsql = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, active, IsAdmin) VALUES (?, ?, ?, ?, ?, ?, 1, ?)");
-	if ($insertsql->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam, $IsGebruiker)))
+elseif (empty($_POST['ja'])) {
+	$insertsql = $db->prepare("INSERT INTO members (voornaam, voorvoegsel, achternaam, email, wachtwoord, gebruikersnaam, active) VALUES (?, ?, ?, ?, ?, ?, 1)");
+	if ($insertsql->execute(array($Voornaam, $Voorvoegsel, $Achternaam, $Email, $Hash, $Gebruikersnaam)))
 	{
 		if ($insertsql->rowCount() > 1) {
 			$_SESSION['errors'][] = "U maakt teveel rijen";
@@ -89,7 +87,6 @@ elseif (isset($_POST['nee']) && $_POST['nee'] == 0) {
 			exit;
 		}
 	}
-
 }
 else
 {
@@ -97,5 +94,6 @@ else
 	header('Location: create_user.php');
 	exit;
 }
+
 
 
