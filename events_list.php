@@ -11,7 +11,15 @@
 	header('location: login_admin.php');
 	exit;
 }
-else
+
+elseif ( IsLoggedInSession()==true && $_SESSION['IsAdmin'] == false)
+{
+	$_SESSION['errors'][] = "U bent wel ingelogd, maar u bent geen beheerder!";
+	header('location: main.php');
+	exit;
+}
+
+elseif ( IsLoggedInSession()==true && $_SESSION['IsAdmin'] == true )
 {
 	require 'inc/connection.php';
 
