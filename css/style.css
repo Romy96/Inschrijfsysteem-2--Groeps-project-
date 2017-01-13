@@ -94,6 +94,7 @@ div.debugbar {
 	right: 0;
 	min-height: 80px;
 	background-color: pink;
+	color: black;
 	border: 1px solid silver;
 }
 

@@ -4,21 +4,20 @@
  require_once 'inc/blade.php';
  $errors = [];
 
-if ( IsLoggedInSession()==false) {
-	// stuur direct door naar main pagina
-    $_SESSION['errors'][] = "U heeft nog niet ingelogd!";
+ if ( IsLoggedInSession()==false ) {
+	$_SESSION['errors'][] = "U heeft nog niet ingelogd!";
 	header('location: login_admin.php');
 	exit;
 }
 
-elseif ( IsLoggedInSession()==true && $_SESSION['IsAdmin'] == false)
+elseif ( IsLoggedInSession()==true && IsAdmin() == false)
 {
 	$_SESSION['errors'][] = "U bent wel ingelogd, maar u bent geen beheerder!";
 	header('location: main.php');
 	exit;
 }
 
-elseif ( IsLoggedInSession()==true && $_SESSION['IsAdmin'] == true)
+elseif ( IsLoggedInSession()==true && IsAdmin() == true )
 {
 	require 'inc/connection.php';
 

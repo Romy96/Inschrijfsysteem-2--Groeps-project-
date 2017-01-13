@@ -1,45 +1,44 @@
 <?php
-function CheckUserIsValid ($db, $email, $wachtwoord, $needs_admin = false) {
+function CheckUserIsValid ($db, $email, $wachtwoord) {
+
+	if (empty($db)) {
+		$_SESSION['errors'][] = 'De database verbinding is niet actief';
+		return false;
+	}
+
 	// return 0 if email is empty
 	if (empty($email)) {
-		return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null];
+		$_SESSION['errors'][] = 'Uw emailadres is niet ingevuld';
+		return false;
 	}
 
 	// return 0 if password is empty
 	if (empty($wachtwoord)) {
-		return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null];
+		$_SESSION['errors'][] = 'Uw wachtwoord is niet ingevuld';
+		return false;
 	}
 
 	$hash = md5($wachtwoord);
 
-	$statement = $db->prepare('SELECT id, gebruikersnaam, IsAdmin FROM members where email=? AND wachtwoord=? AND active=1 ;');
+	$statement = $db->prepare('SELECT id, gebruikersnaam, isAdmin, email FROM members where email=? AND wachtwoord=? AND active=1 ;');
 	$statement->execute(array($email, $hash));
 	$count = $statement->rowCount();
 	$row = $statement->fetch(PDO::FETCH_ASSOC);
-	$userId = $row['id'];
-	$Gebruikersnaam = $row['gebruikersnaam'];
-	$IsAdmin = $row['IsAdmin'];
 
 	// user/pass combination found; return 1.
 	if ($count == 1) {
-		if ($needs_admin == true) {
-				if ($IsAdmin == 1) {
-					return ['result' => 1, 'userId' => $userId, 'userEmail' => $email, 'Gebruikersnaam' => $Gebruikersnaam, 'IsAdmin' => $needs_admin];
-				} 
-				else {
-					return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null, 'IsAdmin' => null];
-				}
-			}
-			else{
-				return ['result' => 1, 'userId' => $userId, 'userEmail' => $email, 'Gebruikersnaam' => $Gebruikersnaam];			
-			}	
-		}
-		else
-		{
-			return ['result' => 0, 'userId' => null, 'userEmail' => null, 'Gebruikersnaam' => null];
-		}
-
+			$_SESSION['userId'] = $row['id'];
+			$_SESSION['userEmail'] = $row['email'];
+			$_SESSION['displayName'] = $row['gebruikersnaam'];
+			$_SESSION['isAdmin'] = $row['isAdmin'] ;
 	}
+	else
+	{
+		$_SESSION['errors'][] = "Combinatie van gebruikersnaam en wachtwoord niet gevonden";
+	}
+}
+
+
 
 function IsLoggedIn() {
 
@@ -57,21 +56,19 @@ function IsLoggedIn() {
 	return false;
 }
 
-function LoginSession($userId, $userEmail, $Gebruikersnaam) {
-	$_SESSION['userId'] = $userId;
-	$_SESSION['userEmail'] = $userEmail;
-	$_SESSION['displayName'] = $displayName;
-}
 
-function RememberCookie($userId, $userEmail, $Gebruikersnaam) {
+function RememberCookie() {
 			// bewaar userId in cookie dat 30 dagen geldig blijft
-			setcookie("userId", $userId, time() + (86400 * 30), "/"); // 86400 = 1 day
+			setcookie("userId", $_SESSION['userId'], time() + (86400 * 30), "/"); // 86400 = 1 day
 
 			// bewaar userEmail in cookie dat 30 dagen geldig blijft
-			setcookie("userEmail", $userEmail, time() + (86400 * 30), "/"); // 86400 = 1 day
+			setcookie("userEmail", $_SESSION['userEmail'], time() + (86400 * 30), "/"); // 86400 = 1 day
 
 			// bewaar displayName in cookie dat 30 dagen geldig blijft
-			setcookie("displayName", $displayName, time() + (86400 * 30), "/"); // 86400 = 1 day
+			setcookie("displayName", $_SESSION['displayName'], time() + (86400 * 30), "/"); // 86400 = 1 day
+
+			// bewaar displayName in cookie dat 30 dagen geldig blijft
+			setcookie("isAdmin", $_SESSION['isAdmin'], time() + (86400 * 30), "/"); // 86400 = 1 day
 }
 
 function IsLoggedInSession() {
@@ -84,11 +81,19 @@ function IsLoggedInSession() {
 	}
 }
 
+function IsAdmin() {
+	return (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1);
+}
+
 function LogOut() {
 	$_SESSION['errors'][] = "Logged out.";
 
-	unset($_SESSION['userId'], $_SESSION['userEmail'], $_SESSION['Gebruikersnaam']);
+	unset($_SESSION['userId'], $_SESSION['userEmail'], $_SESSION['displayName'], $_SESSION['isAdmin']);
+	$_SESSION = [];
+	session_destroy();
 
+
+	session_start();
 	// verwijder het cookie door expiration 
 	setcookie("userId", null, time() -3600, "/"); // 86400 = 1 day
 	setcookie("userEmail", null, time() -3600, "/"); // 86400 = 1 day

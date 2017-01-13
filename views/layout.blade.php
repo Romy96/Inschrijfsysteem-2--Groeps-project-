@@ -11,10 +11,10 @@
 <!-- show the topmenu bar -->
 <div class="topbar">
 
-@if(isset($_SESSION['userEmail']))
+@if(isset($_SESSION['userId']))
 	<span class="">Gebruiker: {{ $_SESSION['userEmail'] }}</span>
 	<span class="" style="float:right;"><a class="navbar_link" href="logout_action.php">Logout</a></span>
-	<span class="" style="float:right;"><a class="navbar_link" href="login_admin.php">Beheerder inloggen</a></span>
+	<span class="" style="float:right;"><a class="navbar_link" href="events_list.php">Beheer</a></span>
 @else
 	<span class="" style="float:right;"><a class="navbar_link" href="register.php">Registreren</a></span>
 	<span class="" style="float:right;"><a class="navbar_link" href="login.php">Login</a></span>
@@ -53,7 +53,7 @@
 </div>
 
 
-<div style="display:none;" class="debugbar">
+<div class="debugbar">
 	<div class="debugbar-inner">
 		<div class="col">
 			<h3>Cookie contents: </h3>
