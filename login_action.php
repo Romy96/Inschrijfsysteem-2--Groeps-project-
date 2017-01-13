@@ -16,6 +16,12 @@ if ( empty($_POST['wachtwoord']) ) {
 // check if user can be found
 if (empty($_SESSION['errors'])) $resultarray = CheckUserIsValid($db, $_POST['email'], $_POST['wachtwoord']);
 
+if ( $resultarray['result'] == 0 ) {
+	$_SESSION['errors'][] = 'Fout: De ingevulde gegevens zijn niet gevonden!';
+	header('Location: login_admin.php');
+	exit;
+}
+
 if ( $resultarray['result'] == 1 ) {
 	LoginSession($resultarray['userId'], $resultarray['userEmail'], $resultarray['Gebruikersnaam']);
 
