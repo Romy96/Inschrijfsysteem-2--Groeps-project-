@@ -13,9 +13,14 @@ if ( empty($_POST['wachtwoord']) ) {
 	$_SESSION['errors'][] = 'Fout: Geen wachtwoord ingevuld.';
 }
 
-
 // check if user can be found
 if (empty($_SESSION['errors'])) $resultarray = CheckUserIsValid($db, $_POST['email'], $_POST['wachtwoord'], true);
+
+if ( $resultarray['result'] == 0 ) {
+	$_SESSION['errors'][] = 'Fout: De ingevulde gegevens zijn niet gevonden!';
+	header('Location: login_admin.php');
+	exit;
+}
 
 if ( $resultarray['IsAdmin'] == 0 ) {
 	$_SESSION['errors'][] = 'Fout: Uw account is geen beheerder!';
