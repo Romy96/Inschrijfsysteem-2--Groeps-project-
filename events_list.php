@@ -8,7 +8,7 @@
 
  if ( IsLoggedInSession()==false ) {
 	$_SESSION['errors'][] = "U heeft nog niet ingelogd!";
-	header('location: login_admin.php');
+	header('location: login.php');
 	exit;
 }
 

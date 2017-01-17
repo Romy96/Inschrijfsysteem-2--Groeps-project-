@@ -1,9 +1,9 @@
-<?php 
+<?php
 
  require_once 'inc/session.php';
  require_once 'inc/blade.php';
  require_once 'inc/crud.php';
-
+ $errors = [];
 
  if ( IsLoggedInSession()==false ) {
 	$_SESSION['errors'][] = "U heeft nog niet ingelogd!";
@@ -24,12 +24,7 @@ elseif ( IsLoggedInSession()==true && IsAdmin() == true )
 
 	$id = $_GET['id'];
 
-	$sth = $db->prepare("SELECT * FROM activities where event_id = ?");
-	$sth->execute(array($id));
-	/* Fetch all of the remaining rows in the result set */
-	$activities = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-	$sth = $db->prepare("SELECT * FROM events WHERE id=? ORDER BY id ASC");
+	$sth = $db->prepare("SELECT * FROM events WHERE id=?");
 	// controleer of er een foutmelding is ontstaan en zo ja, plaats die dan in $_SESSION['errors'][] = $msg
 
 	if ($sth->execute(array($id)))
@@ -44,10 +39,16 @@ elseif ( IsLoggedInSession()==true && IsAdmin() == true )
 	}
 
 
+	$sth = $db->prepare("SELECT * FROM activities where event_id = ?");
+	$sth->execute(array($id));
+	/* Fetch all of the remaining rows in the result set */
+	$activities = $sth->fetchAll(PDO::FETCH_ASSOC);
+
 	// tell blade to create HTML from the template "login.blade.php"
-	 $errors = [];
-	echo $blade->view()->make('backend/activities/activities_list')
+	echo $blade->view()->make('backend/activities/create_activity')
 	->with('event', $event)
 	->with('activities', $activities)->withErrors($errors)->render();
 
 }
+
+?>
