@@ -38,12 +38,12 @@
                             @foreach($events as $row)
                                 <tr>
                                     <td>
-                                        <a href="event_activities.php?id={{$row['id']}}">
+                                        <a href="activities_list.php?id={{$row['id']}}">
                                             {{$row['id']}}
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="event_activities.php?id={{$row['id']}}">
+                                        <a href="activities_list.php?id={{$row['id']}}">
                                             {{$row['title']}}
                                         </a>
                                     </td>
@@ -54,12 +54,12 @@
                                     	<img class="img-thumbnail banner-img" src="{{$row['large_banner_url']}}">
                                     </td>
                                     <td>
-                                        <a href="event_activities.php?id={{$row['id']}}">
+                                        <a href="activities_list.php?id={{$row['id']}}">
                                             {{$row['start_date']}}
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="event_activities.php?id={{$row['id']}}">
+                                        <a href="activities_list.php?id={{$row['id']}}">
                                             {{$row['end_date']}}
                                         </a>
                                     </td>
