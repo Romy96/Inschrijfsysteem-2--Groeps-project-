@@ -52,8 +52,8 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="Edit_activity.php?id={{$rows['id']}}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
-                                            <a href="Delete_activity_action.php?id={{$rows['id']}}&events_id={{$rows['event_id']}}" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></a>
+                                            <a href="edit_activity.php?id={{$rows['id']}}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
+                                            <a href="delete_activity_action.php?id={{$rows['id']}}&events_id={{$rows['event_id']}}" onclick="return confirm('Weet je het zeker?')" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

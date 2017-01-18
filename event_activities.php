@@ -3,9 +3,12 @@
  require_once 'inc/blade.php';
  require_once'inc/connection.php';
  $errors = [];
+ 
 // go away if user not logged in
-if ( empty($_SESSION['userId'])) {
-    die('not allowed if not logged in.');
+ if ( IsLoggedInSession()==false ) {
+	$_SESSION['errors'][] = "U heeft nog niet ingelogd!";
+	header('location: login.php');
+	exit;
 }
 
 	$id = $_GET['id'];
