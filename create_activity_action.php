@@ -36,11 +36,13 @@ if ($sql->execute(array($naam, $afbeelding, $beschrijving))) {
 $sth = $db->prepare("INSERT INTO activities (event_id, title, banner_url, description) VALUES (?, ?, ?, ?)");
 if ($sth->execute(array($event_id, $naam, $afbeelding, $beschrijving))) {
 	$_SESSION['errors'][] = 'De gegevens zijn ingevuld en opgeslagen in de database.';
-	header('Location: event_activities.php?id=' . $event_id);
+	header('Location: activities_list.php?id=' . $event_id);
+	exit;
 }
 else
 {
 	$_SESSION['errors'][] = 'Er is iets fout gegaan in de database. Probeer het later nog eens.';
-	header('Location: create_activity.php?id=' . $event_id);
+	header('Location: activities_list.php?id=' . $event_id);
+	exit;
 }
 ?>
