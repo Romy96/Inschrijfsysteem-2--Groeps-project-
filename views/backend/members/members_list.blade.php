@@ -44,12 +44,12 @@
                                     	{{$row['email']}}
                                     </td>
                                     <td>
-                                    	{{$row['IsAdmin']}}
+                                    	{{$row['isAdmin']}}
                                     </td>
                                     <td>
                                         <div class="btn-group">
                                         	<a href="Edit_user.php?id={{$row['id']}}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
-                                            <a href="Delete_user_action.php?id={{$row['id']}}" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></a>
+                                            <a href="Delete_user_action.php?id={{$row['id']}}" onclick="return confirm('Weet je het zeker?')" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

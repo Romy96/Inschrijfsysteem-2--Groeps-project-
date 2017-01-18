@@ -18,7 +18,7 @@ if ($sth->execute(array($activity_id)))
 }
 else
 {
-	$_SESSION['errors'][] = 'Het is niet gelukt om de gegevens op te halen.';
+	$_SESSION['errors'][] = 'Het is niet gelukt om de gegevens op te halen en te verwijderen.';
 	header('location: activities_list.php?id=' . $events_id);
 }
 
