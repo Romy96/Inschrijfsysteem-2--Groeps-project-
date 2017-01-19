@@ -1,8 +1,7 @@
 <?php 
  require_once 'inc/session.php';
- require_once 'inc/crud.php';
  require_once 'inc/blade.php';
- $errors = [];
-
+ //$errors = [];
+var_dump($errors); die();
  // output everything
 echo $blade->view()->make('backend/menu')->withErrors($errors)->render();

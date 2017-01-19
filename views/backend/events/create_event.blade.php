@@ -2,7 +2,6 @@
 
 @section('content_backend')
 
-@if(isset($event))
 <h1>Creëren evenement</h1>
 
     <div class="row">
@@ -38,13 +37,13 @@
                                 <div class='form-group'>
                                     <label for="startdatum">Startdatum:</label>
                                      <div class="input-group">
-                                        <input class="form-control" data-slug="source" placeholder="startdatum" name="startdatum" type="date" id="startdatum">
+                                        <input class="form-control" data-slug="source" placeholder="startdatum" name="startdatum" type="datetime" id="startdatum">
                                     </div>
                                 </div>
                                 <div class='form-group'>
                                     <label for="startdatum">Einddatum:</label>
                                      <div class="input-group">
-                                        <input class="form-control" data-slug="source" placeholder="einddatum" name="einddatum" type="date" id="einddatum">
+                                        <input class="form-control" data-slug="source" placeholder="einddatum" name="einddatum" type="datetime" id="einddatum">
                                     </div>
                                 </div>
                                 <input type="submit" name="btn-submit" id="submit" value="Submit" class="btn btn-info pull-right">
@@ -54,6 +53,5 @@
             </div>
         </form>
     </div>
-@endif
 
 @endsection
