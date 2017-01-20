@@ -169,3 +169,8 @@ ul, li {
     display:none;
 }
 
+.errormessages {
+	background-color: #ff4d4d;
+	border: 1px solid red;
+	color: black;
+}

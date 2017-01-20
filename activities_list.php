@@ -3,6 +3,7 @@
  require_once 'inc/session.php';
  require_once 'inc/blade.php';
  require_once 'inc/crud.php';
+ $errors = [];
 
 
  if ( IsLoggedInSession()==false ) {

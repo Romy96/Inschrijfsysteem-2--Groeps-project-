@@ -35,9 +35,9 @@
  ?>
  
 
-@if(isset($errors))       {{-- does $errors exist? --}}
   @if(count($errors)>0)     {{-- does $errors have any errors? --}}
-    <div class="control-sidebar-bg"></div>
+     <div style="background-color: #ff4d4d; border: 2px solid #c73e3e; color: black;">
+    <h3>Error(s):</h3>
       <ul>
         @foreach ($errors as $error)   
           <li>{{ $error }}</li>
@@ -45,7 +45,6 @@
       </ul>
     </div>
   @endif
-@endif
 
 <!-- content goes here -->
 <div class="content">

@@ -2,7 +2,6 @@
  require_once 'inc/session.php';
  require_once 'inc/crud.php';
  require_once 'inc/blade.php';
- $errors = [];
 
  if ( IsLoggedInSession()==false ) {
 	$_SESSION['errors'][] = "U heeft nog niet ingelogd!";
@@ -30,5 +29,5 @@ elseif ( IsLoggedInSession()==true && IsAdmin() == true )
 	$users = $sth->fetchAll(PDO::FETCH_ASSOC);
 
  // output everything
-echo $blade->view()->make('backend/members/members_list')->with('users', $users)->withErrors($errors)->render();
+echo $blade->view()->make('backend/members/members_list')->with('users', $users)->render();
 }

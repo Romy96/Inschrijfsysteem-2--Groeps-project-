@@ -28,7 +28,7 @@ if (isset($_POST['ja']) && $_POST['ja'] == 1) {
 				exit;
 			}
 			if ( $sth->rowCount() == 1 ) {
-				$_SESSION['errors'][] = 'De aangepaste gegevens zijn opgeslagen in de database';
+				$_SESSION['messages'][] = 'De aangepaste gegevens zijn opgeslagen in de database';
 				header("location: members_list.php");
 				exit;
 			}
