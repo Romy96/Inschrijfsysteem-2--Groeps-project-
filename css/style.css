@@ -171,6 +171,9 @@ ul, li {
 }
 
 .content-wrapper {
-	overflow: scroll;
+	padding-bottom: 15em;
+}
+
+div.content {
 	padding-bottom: 15em;
 }
