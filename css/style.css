@@ -123,22 +123,40 @@ ul, li {
 
 #pswd_info {
     position:absolute;
-    bottom:-150px;
+    bottom:-25px;
     bottom: -95px\9; /* IE Specific */
-    left:55px;
+    right:-250px;
     width:200px;
-    padding:10px;
+    height: 250px;
+    padding:0px;
     background:#fefefe;
     font-size:0.875em;
     border-radius:5px;
     box-shadow:0 1px 3px #ccc;
     border:1px solid #ddd;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
 }
 
 #pswd_info h4 {
     margin:0 0 10px 0;
-    padding:0;
+    padding:10px;
     font-weight:normal;
+    -webkit-transform: rotate(-270deg);
+    -moz-transform: rotate(-270deg);
+    -o-transform: rotate(-270deg);
+    padding-bottom: 125px;
+}
+
+#pswd_info ul {
+	-webkit-transform: rotate(-270deg);
+    -moz-transform: rotate(-270deg);
+    -o-transform: rotate(-270deg);
+    position: absolute;
+    padding-top: 40%;
+    width: 100%;
+    margin: auto;
 }
 
 #pswd_info::before {
@@ -158,22 +176,17 @@ ul, li {
     padding-left:22px;
     line-height:24px;
     color:#ec3f41;
+    margin: 5px -200px;
 }
 .valid {
 	background:url(../img/tick.png) no-repeat 0 50%;
     padding-left:22px;
     line-height:24px;
     color:#3a7d34;
+    margin: 5px -200px;
 }
 
 #pswd_info {
     display:none;
 }
 
-.content-wrapper {
-	padding-bottom: 15em;
-}
-
-div.content {
-	padding-bottom: 15em;
-}
