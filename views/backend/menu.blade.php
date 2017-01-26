@@ -166,5 +166,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
 <script src="js/password_verification.js"></script>
+<script src="js/ShowDiv.js"></script>
 </body>
 </html>

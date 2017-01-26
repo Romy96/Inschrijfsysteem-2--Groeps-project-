@@ -125,7 +125,7 @@ ul, li {
     position:absolute;
     bottom:-25px;
     bottom: -95px\9; /* IE Specific */
-    right:-250px;
+    right:-280px;
     width:200px;
     height: 250px;
     padding:0px;
@@ -190,3 +190,13 @@ ul, li {
     display:none;
 }
 
+.pwd_req {
+	background: url(../img/question_mark.png) no-repeat 0 50%;
+	position:absolute;
+	bottom: 85px;
+	right: -40px;
+	display:block;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+}
