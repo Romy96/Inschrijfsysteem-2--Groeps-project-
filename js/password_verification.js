@@ -32,4 +32,10 @@ $(document).ready(function() {
 		    $('#number').removeClass('valid').addClass('invalid');
 		}
 
-});
+		}).focus(function() {
+		    $('#pswd_info').show();
+		}).blur(function() {
+		    $('#pswd_info').hide();
+		});
+
+})

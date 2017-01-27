@@ -61,7 +61,7 @@
                         <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
                     </ul>
                 </div>
-                <button class="pwd_req" id="button" data-role="button" onclick="ShowDiv()"></button>
+                <button class="pwd_req" id="button" onclick="ShowDiv()"></button>
                 <input type="submit" name="btn-submit" id="submit" value="Submit" class="btn btn-info pull-right">
             </div>
         </form>
