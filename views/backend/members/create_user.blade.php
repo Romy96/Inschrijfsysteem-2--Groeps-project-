@@ -7,7 +7,7 @@
     <div class="row">
         <form role="form" method="post" action="create_user_action.php">
             <div class="col-lg-6">
-                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Verplicht veld</strong></div>
                 <div class="form-group">
                     <label for="txt_voornaam">Wordt deze account een beheerdersaccount?</label>
                     <div class="input-group">
@@ -58,13 +58,13 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
-                <div id="pswd_info">
-                    <h4>Password must meet the following requirements:</h4>
+                <div id="pswd_info" style="display: none;">
+                    <h4>Wachtwoord moet voldoen aan de volgende eisen:</h4>
                     <ul>
-                        <li id="letter" class="invalid">At least <strong>one letter</strong></li>
-                        <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
-                        <li id="number" class="invalid">At least <strong>one number</strong></li>
-                        <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
+                        <li id="letter" class="invalid">Minstens <strong>1 kleine letter</strong></li>
+                        <li id="capital" class="invalid">Minstens <strong>1 hoofdletter</strong></li>
+                        <li id="number" class="invalid">Minstens <strong>1 nummer</strong></li>
+                        <li id="length" class="invalid">Minimaal <strong>8 tekens</strong> lang</li>
                     </ul>
                 </div>
                 <button class="pwd_req" id="button" data-role="button" onclick="ShowDiv()"></button>
