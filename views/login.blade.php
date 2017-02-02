@@ -7,7 +7,7 @@
     <div class="row">
         <form role="form" method="POST" action="login_action.php">
             <div class="col-lg-6">
-                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Verplicht veld</strong></div>
                 <div class="form-group">
                     <label for="Email">Email</label>
                     <div class="input-group">

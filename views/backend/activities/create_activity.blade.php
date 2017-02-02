@@ -24,7 +24,7 @@
                                     <label for="afbeelding">Afbeelding achtergrond:</label>
                                     <input type="text" class="form-control" data-slug="source" placeholder="afbeelding achtergrond" id="afbeelding" name="afbeelding">
                                     <span class="custom-file-control"></span>
-                                    <small class="text-muted">Put image URL from your documents or internet into the field.</small>
+                                    <small class="text-muted">Zet het URL van uw documenten of internet in dit veld.</small>
                                 </div>
 
                                 <div class='form-group'>
