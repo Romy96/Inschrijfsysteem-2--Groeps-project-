@@ -5,6 +5,8 @@
 
 @if(isset($activity))
 
+<h1>Bewerken activiteit</h1>
+
     <form role="form" method="post" action="edit_activity_action.php">
         <div class="row">
             <div class="col-md-12">

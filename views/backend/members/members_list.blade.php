@@ -2,7 +2,7 @@
 
 @section('content_backend')
 
-<h1>Members</h1>
+<h1>Gebruikers</h1>
 
 
 

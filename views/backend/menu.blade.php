@@ -69,11 +69,11 @@
         <li class="header">MENU</li>
         <li class="treeview">
         @if(isset($_SESSION['userEmail']))
-            <li><a href="logout_action.php"><i class="fa fa-circle-o"></i>Logout</a></li>
+            <li><a href="logout_action.php"><i class="fa fa-circle-o"></i>Uitloggen</a></li>
             <li><a href="events_list.php"><i class="fa fa-circle-o"></i>Evenementen</a></li>
             <li><a href="members_list.php"><i class="fa fa-circle-o"></i>Gebruikers</a></li>
         @else
-            <li><a href="Login.php"><i class="fa fa-circle-o"></i>Login</a></li>
+            <li><a href="Login.php"><i class="fa fa-circle-o"></i>Inloggen</a></li>
         @endif
         </li>
       </ul>

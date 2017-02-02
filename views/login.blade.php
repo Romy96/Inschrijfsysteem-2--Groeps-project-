@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Login</h1>
+<h1>Inloggen</h1>
 
     <div class="row">
         <form role="form" method="POST" action="login_action.php">
